@@ -1,0 +1,112 @@
+:root {
+    --primary: #e99401;
+    --black: #262626;
+    --white: #FFF;
+    --fuente-principal: 'Outfit', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 2rem;
+    font-family: var(--fuente-principal);
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+[class*="contenedor"],
+main {
+    width: min(95%, 120rem);
+    margin: 3rem auto;
+}
+
+[class*="heading"] {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 900;
+    color: var(--primary);
+    margin: 5rem 0;
+}
+
+.outfit-100 {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+.outfit-400 {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.outfit-700 {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.outfit-900 {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* HEADER */
+.header {
+    background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 /.5)), url('/img/header.jpg');
+    padding: 6rem 0;
+    background-size: cover;
+    background-position: center center;
+}   
+
+.header .logo {
+    width: 25rem;
+}
+
+.header .barra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .5s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .header .barra {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.header .navigation {
+    display: flex;
+    gap: 4rem;
+}
+.header .navigation a:hover {
+    background-color: var(--primary);
+}
+.header .navigation a {
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    transition: all .7s ease-in-out;
+    border-radius: 25rem;
+}
