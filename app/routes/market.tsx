@@ -1,8 +1,9 @@
 import { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import Guitar from "~/components/guitar";
-import { IGuitar } from "~/entities/guitar.entity";
 import { get_guitars } from "~/models/guitars.server";
+import { IApiResponse } from "~/entities/response-strappi.entitys";
+import { IGuitarModel } from "~/entities/guitar.entity";
+import GuitarList from "~/components/guitar-list";
 import styles from '../styles/guitar.css';
 
 export const meta: MetaFunction = () => {
@@ -20,22 +21,15 @@ export function links() {
     ]
 }
 export async function loader() {
-    const { data } = await get_guitars() || [];
-    return data;
+    const response = await get_guitars();
+    return response;
 }
 
 function Market() {
-    const guitars: IGuitar[] = useLoaderData();
+    const guitars = useLoaderData() as  IApiResponse<IGuitarModel>;
     return (
         <main className="contenedor">
-            <h2 className="heading">~~ Our Stock ~~</h2>
-            {
-                guitars?.length && (
-                    <div className="guitarras-grid">
-                        {guitars.map( g => (<Guitar guitar={g.attributes} key={g.attributes.url} />))}
-                    </div>
-                )
-            }
+            <GuitarList guitars={guitars}/>
         </main>
     );
 }

@@ -1,8 +1,8 @@
 import { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import Post from "~/components/post";
+import PostList from "~/components/post-list";
 import { IPostEntity } from "~/entities/posts.entitys";
-import { ICollectionStrappi } from "~/entities/response-strappi.entitys";
+import { IApiResponse } from "~/entities/response-strappi.entitys";
 import { get_posts } from "~/models/posts.server";
 import styles from '~/styles/blog.css';
 
@@ -30,22 +30,15 @@ export async function loader() {
 			statusText: 'Posts not found :('
 		});
 	}
-	const { data } = posts;
-	return data;
+	
+	return posts;
 }
 
 const Blog = () => {
-	const posts = useLoaderData() as ICollectionStrappi<IPostEntity>[];
+	const posts = useLoaderData() as IApiResponse<IPostEntity>;
 	return (
 		<main className="contenido">
-			<h3 className="heading"> Blog </h3>
-			<div className="blog">
-				{
-					posts && (
-						posts?.map(p => <Post key={p.id} post={p?.attributes} />)
-					)
-				}
-			</div>
+			<PostList posts={posts} />
 		</main>
 	);
 };

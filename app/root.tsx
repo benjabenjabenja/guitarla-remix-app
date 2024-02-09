@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cssBundleHref } from "@remix-run/css-bundle";
 import styles from './styles/index.css';
 import type { LinksFunction } from "@remix-run/node";
@@ -32,7 +33,7 @@ export const links: LinksFunction = () => [
 	] || cssBundleHref : []),
 ];
 
-export function Document({ children }) {
+export function Document({ children }: React.ComponentProps<any>) {
     return (
         <html lang="es-AR">
             <head>

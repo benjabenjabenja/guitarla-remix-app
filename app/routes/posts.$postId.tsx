@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import { IPostEntity, IPostParams } from "~/entities/posts.entitys";
-import { IApiResponse, ICollectionStrappi } from "~/entities/response-strappi.entitys";
+import { IApiResponse } from "~/entities/response-strappi.entitys";
 import { get_post_by_id } from "~/models/posts.server";
 import { format_date } from "~/utils/helpers.utils";
 import styles from '~/styles/blog.css';

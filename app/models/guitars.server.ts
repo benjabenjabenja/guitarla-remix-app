@@ -16,7 +16,7 @@ export async function get_guitar_by_id(params: string): Promise<IApiResponse<IGu
     return response.json();
 }
 
-export async function get_guitars(): Promise<IApiResponse<IGuitarModel[]>>{
+export async function get_guitars(): Promise<IApiResponse<IGuitarModel>>{
     const url = `${__url}${_url_guitars('')}`;
     const response = await fetch(url);
     return response.json();
