@@ -157,3 +157,16 @@ main {
     }
     
 }
+
+.error, a.error-link {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 5rem;
+}
+
+a.error-link {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.8rem;
+}

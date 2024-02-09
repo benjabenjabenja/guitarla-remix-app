@@ -56,9 +56,21 @@ export type IAtributtesStrappi = {
     description: IDescriptionAttributesStrappi[];
     guitar_name:string;
     image: IImageStrappi;
-    price:345
+    price: number;
     publishedAt:string;
     updatedAt:string;
     url:string;
 }
 export type IGuitar = { attributes: IAtributtesStrappi, id: number };
+
+export type IGuitarParams = { guitarId: string };
+export type IGuitarModel = {
+    createdAt: string;
+    description: IDescriptionAttributesStrappi[];
+    guitar_name: string;
+    image: IImageStrappi;
+    price:number;
+    publishedAt:string;
+    updatedAt:string;
+    url: string;
+}
