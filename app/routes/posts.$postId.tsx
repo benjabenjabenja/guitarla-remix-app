@@ -32,7 +32,7 @@ const PostId = () => {
     const { contenido, image, title, createdAt,url } = attributes;
     return (
         <article className="contenedor post">
-            <img className='imagen' src={image?.data?.attributes?.url} alt={`blog ${image.data.attributes.url}`} />
+            <img className='imagen mt__5' src={image?.data?.attributes?.url} alt={`blog ${image.data.attributes.url}`} />
             <div className="contenido">
                 <h3 className="heading"> { title } </h3>
                 <p className="fecha">{ format_date(createdAt) }</p>
