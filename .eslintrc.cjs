@@ -53,6 +53,9 @@ module.exports = {
     {
       files: ["**/*.{ts,tsx}"],
       plugins: ["@typescript-eslint", "import"],
+      rules: {
+        "react/prop-types": 0
+      },
       parser: "@typescript-eslint/parser",
       settings: {
         "import/internal-regex": "^~/",
@@ -61,7 +64,7 @@ module.exports = {
             extensions: [".ts", ".tsx"],
           },
           typescript: {
-            alwaysTryTypes: true,
+            alwaysTryTypes: false,
           },
         },
       },

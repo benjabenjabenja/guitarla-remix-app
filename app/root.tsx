@@ -11,6 +11,7 @@ import {
 } from "@remix-run/react";
 
 import Header from '~/components/header';
+import Footer from '~/components/footer';
 
 export const links: LinksFunction = () => [
 	...(styles ? [
@@ -37,9 +38,10 @@ export default function App() {
 			<body>
 				<Header />
                 <Outlet />
+				<Footer />
                 <ScrollRestoration />
                 <Scripts />
-                <LiveReload />
+				<LiveReload />
             </body>
         </html>
     );
