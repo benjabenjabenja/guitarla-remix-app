@@ -1,9 +1,10 @@
 import { useLoaderData } from "@remix-run/react";
 import { IGuitarModel, IGuitarParams } from "~/entities/guitar.entity";
+import { ICollectionStrappi } from "~/entities/response-strappi.entitys";
 import { get_guitar_by_id } from "~/models/guitars.server";
 import styles from '~/styles/guitar.css';
 
-export async function loader({ params }: { request: Request, params: IGuitarParams }): Promise<{ attributes: IGuitarModel, id: number }> {
+export async function loader({ params }: { request: Request, params: IGuitarParams }): Promise<ICollectionStrappi<IGuitarModel>> {
     
     const { guitarId } = params;
     const { data } = await get_guitar_by_id(guitarId);
@@ -25,7 +26,7 @@ export function links() {
     ];
 }
 
-export function meta({ data }: { data: { attributes: IGuitarModel, id: number }}) {
+export function meta({ data }: { data: ICollectionStrappi<IGuitarModel>}) {
     const { attributes } = data || { attributes: null };
     const response = data ? [
         { title: attributes?.guitar_name + " - RemixRun App" },

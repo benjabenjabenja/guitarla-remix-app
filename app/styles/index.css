@@ -170,3 +170,19 @@ a.error-link {
     text-align: center;
     font-size: 1.8rem;
 }
+.link {
+    text-decoration: none;
+    display: block;
+    color: var(--black);
+    margin-top: 1.5rem;
+    padding: .6rem .5rem;
+    text-align: center;
+    text-transform: lowercase;
+    transition: all .5s ease-in-out;
+    border-radius: 25rem;
+    font-size: 1.6rem;
+}
+.link:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
