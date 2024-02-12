@@ -1,6 +1,7 @@
 import { IImageStrappi, IStrappiContent } from "./response-strappi.entitys";
+
 export type IGuitarParams = { guitarId: string };
-export type IGuitarModel = {
+export type IGuitarEntity = {
     createdAt: string;
     description: IStrappiContent[];
     guitar_name: string;

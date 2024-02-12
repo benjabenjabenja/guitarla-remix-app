@@ -2,7 +2,7 @@ import { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { get_guitars } from "~/models/guitars.server";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
-import { IGuitarModel } from "~/entities/guitar.entity";
+import { IGuitarEntity } from "~/entities/guitar.entity";
 import GuitarList from "~/components/guitar-list";
 import styles from '../styles/guitar.css';
 
@@ -26,7 +26,7 @@ export async function loader() {
 }
 
 function Market() {
-    const guitars = useLoaderData() as  IApiResponse<IGuitarModel>;
+    const guitars = useLoaderData() as  IApiResponse<IGuitarEntity>;
     return (
         <main className="contenedor">
             <GuitarList guitars={guitars}/>

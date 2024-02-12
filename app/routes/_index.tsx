@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import GuitarList from "~/components/guitar-list";
-import { IGuitarModel } from "~/entities/guitar.entity";
+import { IGuitarEntity } from "~/entities/guitar.entity";
 import { IPostEntity } from "~/entities/posts.entitys";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
 import { get_guitars } from "~/models/guitars.server";
@@ -37,7 +37,7 @@ export async function loader() {
 }
 
 export default function Index() {
-    const { guitars, posts, course } = useLoaderData() as { guitars: IApiResponse<IGuitarModel>, posts: IApiResponse<IPostEntity>, course: IApiResponse<ICourseEntity> };
+    const { guitars, posts, course } = useLoaderData() as { guitars: IApiResponse<IGuitarEntity>, posts: IApiResponse<IPostEntity>, course: IApiResponse<ICourseEntity> };
     console.log({course})
     return (
     <>

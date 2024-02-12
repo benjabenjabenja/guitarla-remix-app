@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { ICourseEntity } from "~/entities/course.entity";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
-export type ICourseEntity = {};
 
 const __url: string | undefined = process.env.API_URL_SERVICES;
 
