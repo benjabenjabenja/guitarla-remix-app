@@ -1,6 +1,6 @@
 import { IApiResponse } from "~/entities/response-strappi.entitys";
 import Post from "./post";
-import { IPostEntity } from "~/entities/posts.entitys";
+import { IPostEntity } from "~/entities/posts.entity";
 
 function PostList({ posts }: { posts: IApiResponse<IPostEntity> }) {
     return (

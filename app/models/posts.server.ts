@@ -1,4 +1,4 @@
-import { IPostEntity } from "~/entities/posts.entitys";
+import { IPostEntity } from "~/entities/posts.entity";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
 
 const __url: string | undefined = process.env.API_URL_SERVICES;

@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-import { IPostEntity } from '~/entities/posts.entitys';
+import { IPostEntity } from '~/entities/posts.entity';
 import { format_date } from '~/utils/helpers.utils';
 
 const Post = ({ post }: { post: IPostEntity }) => {

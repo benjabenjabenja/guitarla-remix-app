@@ -1,7 +1,7 @@
 import { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import PostList from "~/components/post-list";
-import { IPostEntity } from "~/entities/posts.entitys";
+import { IPostEntity } from "~/entities/posts.entity";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
 import { get_posts } from "~/models/posts.server";
 import styles from '~/styles/blog.css';

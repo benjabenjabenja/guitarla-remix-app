@@ -2,11 +2,12 @@ import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import GuitarList from "~/components/guitar-list";
 import { IGuitarEntity } from "~/entities/guitar.entity";
-import { IPostEntity } from "~/entities/posts.entitys";
+import { ICourseEntity } from "~/entities/course.entity";
+import { IPostEntity } from "~/entities/posts.entity";
 import { IApiResponse } from "~/entities/response-strappi.entitys";
 import { get_guitars } from "~/models/guitars.server";
 import { get_posts } from "~/models/posts.server";
-import { ICourseEntity, get_courrse } from "~/models/course.server";
+import { get_courrse } from "~/models/course.server";
 import stylesGuitars from '~/styles/guitar.css';
 import stylesBlog from '~/styles/blog.css'
 import PostList from "~/components/post-list";
@@ -38,7 +39,7 @@ export async function loader() {
 
 export default function Index() {
     const { guitars, posts, course } = useLoaderData() as { guitars: IApiResponse<IGuitarEntity>, posts: IApiResponse<IPostEntity>, course: IApiResponse<ICourseEntity> };
-    console.log({course})
+    console.log({ course });
     return (
     <>
         <main className="contenedor">
