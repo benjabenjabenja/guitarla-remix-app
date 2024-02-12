@@ -1,7 +1,11 @@
 export type IApiResponse<T> = {
-    data: ICollectionStrappi<T>[];
+    data: ICollectionStrappi<T> | ICollectionStrappi<T>[];
     meta: IStrappiPagination;
 };
+export type IApiSingleResponse<T> = {
+    data: ICollectionStrappi<T>;
+    meta: never;
+}
 export type IStrappiPagination = {
     pagination: {
         page: number;

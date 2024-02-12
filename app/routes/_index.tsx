@@ -4,13 +4,15 @@ import GuitarList from "~/components/guitar-list";
 import { IGuitarEntity } from "~/entities/guitar.entity";
 import { ICourseEntity } from "~/entities/course.entity";
 import { IPostEntity } from "~/entities/posts.entity";
-import { IApiResponse } from "~/entities/response-strappi.entitys";
+import { IApiResponse, IApiSingleResponse } from "~/entities/response-strappi.entitys";
 import { get_guitars } from "~/models/guitars.server";
 import { get_posts } from "~/models/posts.server";
 import { get_courrse } from "~/models/course.server";
 import stylesGuitars from '~/styles/guitar.css';
 import stylesBlog from '~/styles/blog.css'
+import stylesCourse from "~/styles/course.css";
 import PostList from "~/components/post-list";
+import Course from '~/components/course';
 
 export const meta: MetaFunction = () => {
     return [
@@ -28,6 +30,10 @@ export function links() {
         {
             rel: 'stylesheet',
             href: stylesBlog
+        },
+        {
+            rel: 'stylesheet',
+            href: stylesCourse
         }
     ]
 }
@@ -38,14 +44,17 @@ export async function loader() {
 }
 
 export default function Index() {
-    const { guitars, posts, course } = useLoaderData() as { guitars: IApiResponse<IGuitarEntity>, posts: IApiResponse<IPostEntity>, course: IApiResponse<ICourseEntity> };
-    console.log({ course });
+    const { guitars, posts, course } = useLoaderData() as { guitars: IApiResponse<IGuitarEntity>, posts: IApiResponse<IPostEntity>, course: IApiSingleResponse<ICourseEntity> };
+
     return (
-    <>
-        <main className="contenedor">
-            <GuitarList guitars={guitars} />
-            <PostList posts={posts} />   
-        </main>    
-    </>
+        <>
+            <main className="contenedor">
+                <GuitarList guitars={guitars} />
+            </main> 
+            <Course course={course} />
+            <section className="contenedor">
+                <PostList posts={posts} />   
+            </section>    
+        </>
     );
 }
