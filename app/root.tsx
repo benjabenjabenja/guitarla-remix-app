@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cssBundleHref } from "@remix-run/css-bundle";
 import styles from './styles/index.css';
@@ -15,6 +16,9 @@ import {
 
 import Header from '~/components/header';
 import Footer from '~/components/footer';
+import { useEffect, useState } from "react";
+import { isValidObject } from "./utils/helpers.utils";
+import { ICartStore, IStore } from "./entities/store.entity";
 
 export type IErrorRemix = {
     status: number;
@@ -58,11 +62,48 @@ export function Document({ children }: React.ComponentProps<any>) {
 }
 
 export default function App() {
+    const [store, setStore] = useState({});
+    const [cart, setCart] = useState<ICartStore[]>([]);
+    const load_data = (): void => {
+        const store: IStore = JSON.parse(localStorage.getItem("store") || "{}");
+        isValidObject(store) && setStore(store);
+    }
+    useEffect(
+        () => load_data(), []
+    );
+    useEffect(
+        () => {
+            setStore({ ...store, cart });
+        }, [cart]
+    );
+    useEffect(
+        () => {
+            localStorage.setItem("store", JSON.stringify(store));
+        }, [store]
+    );
+    const addToCart = (c: ICartStore): void => {
+        if (isValidObject(c)) {
+            const valid = cart.some(v => v?.url === c?.url);
+            if (!valid) {
+                setCart([...cart, c]);
+            } else {
+                const confirmation = confirm(`Seguro dese updatear los datos de ${c.guitar_name}?`);
+                confirmation && setCart(cart.map(ca => {
+                    if (ca.url === c.url) {
+                        return {
+                            ...ca, ...c
+                        };
+                    }
+                    return ca;
+                }));
+            }
+        }
+    }
     return (
         <Document>
             <Outlet context={{
-                store: {},
-                auth: true
+                addToCart,
+                store
             }} />
        </Document>
     );

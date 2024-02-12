@@ -1,7 +1,9 @@
-import { useLoaderData } from "@remix-run/react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Link, useLoaderData, useOutletContext } from "@remix-run/react";
 import { useState } from 'react';
 import { IGuitarEntity, IGuitarParams } from "~/entities/guitar.entity";
 import { ICollectionStrappi } from "~/entities/response-strappi.entitys";
+import { ICartStore } from "~/entities/store.entity";
 import { get_guitar_by_id } from "~/models/guitars.server";
 import styles from '~/styles/guitar.css';
 
@@ -42,9 +44,9 @@ export function meta({ data }: { data: ICollectionStrappi<IGuitarEntity>}) {
 function GuitarId() {
 
     const [count, setCount] = useState(0);
-
+    const { addToCart } = useOutletContext() as { addToCart: (item: ICartStore) => void };
     const { attributes } = useLoaderData() as { attributes: IGuitarEntity, id: number };
-    const { description, image, guitar_name, price } = attributes;
+    const { description, image, guitar_name, price, url } = attributes;
     const { url: image_url } = image?.data?.attributes?.formats?.small || '';
 
     const handleSubmit = (ev: { preventDefault: () => void; }) => {
@@ -57,9 +59,10 @@ function GuitarId() {
             guitar_name,
             t_price: price * count,
             p_uni: price,
-            count
+            count,
+            url
         }
-        localStorage.setItem("cart", JSON.stringify(obj));
+        addToCart(obj);
     }
 
     return (
@@ -88,6 +91,7 @@ function GuitarId() {
                     </div>
                 </main>
             }
+            <Link to={"/market"}> back to market </Link>
         </>
     )
 }
