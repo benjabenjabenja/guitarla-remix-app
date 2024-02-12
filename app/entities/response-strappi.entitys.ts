@@ -1,5 +1,5 @@
 export type IApiResponse<T> = {
-    data: ICollectionStrappi<T> | ICollectionStrappi<T>[];
+    data: ICollectionStrappi<T>[];
     meta: IStrappiPagination;
 };
 export type IApiSingleResponse<T> = {

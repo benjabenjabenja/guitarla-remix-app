@@ -57,6 +57,9 @@ main {
     color: var(--primary);
     margin: 5rem 0;
 }
+select {
+    cursor: pointer;
+}
 
 .outfit-100 {
     font-family: "Outfit", sans-serif;
@@ -104,6 +107,7 @@ main {
 .header .navigation {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 3rem;
     margin-top: 4rem;
 }
@@ -125,6 +129,15 @@ main {
     border-radius: 25rem;
     text-wrap: nowrap;
     text-align: center;
+}
+
+.header .navigation a.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .navigation a.cart img {
+    margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -157,6 +170,9 @@ main {
     color: var(--white);
     font-size: 2rem;
     font-weight: 700;  
+}
+.footer .navigation a:last-of-type {
+    display: none;
 }
 .footer .copyright {
     text-align: center;
@@ -192,7 +208,7 @@ a.error-link {
     display: block;
     color: var(--black);
     margin-top: 1.5rem;
-    padding: .6rem .5rem;
+    padding: .5rem .5rem;
     text-align: center;
     text-transform: lowercase;
     transition: all .5s ease-in-out;

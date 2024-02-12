@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { ICourseEntity } from "~/entities/course.entity";
 import { IApiSingleResponse } from "~/entities/response-strappi.entitys";
 

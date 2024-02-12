@@ -28,6 +28,7 @@
     font-size: 3rem;
     text-transform: uppercase;
     color: var(--primary);
+    text-align: center;
 }
 .guitarra .description {
     display: -webkit-box;
@@ -41,6 +42,7 @@
     font-size: 4rem;
     margin: 0;
     font-weight: 700;
+    text-align: center;
 }
 .guitarra .link {
     text-decoration: none;
@@ -57,4 +59,43 @@
 .guitarra .link:hover {
     background-color: var(--primary);
     color: var(--white);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.formulario label {
+    font-size: 2.2rem;
+    margin-bottom: .8rem;
+}
+.formulario select {
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+.formulario input[type="submit"] {
+    border-radius: 25rem;
+    background-color: var(--white);
+    border: none;
+    padding: 1rem .5rem;
+    color: var(--primary);
+    transition: all .5s ease-in-out;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    margin: 1rem auto 0 auto;
+}
+@media (min-width: 768px){
+    .formulario input[type="submit"] {
+        max-width: 30%;
+    }
+}
+.formulario input[type="submit"]:hover {
+    color: var(--white);
+    background-color: var(--primary);
+    cursor: pointer;
 }
