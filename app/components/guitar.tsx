@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from '@remix-run/react';
-import { IAtributtesStrappi } from '~/entities/guitar.entity';
+import { IGuitarEntity } from '~/entities/guitar.entity';
 
-const Guitar = ({ guitar }: { guitar: IAtributtesStrappi }) => {
+const Guitar = ({ guitar }: { guitar: IGuitarEntity }) => {
 
     const { description, image, price, url, guitar_name } = guitar;
     const { url: image_url } = image?.data?.attributes?.formats?.small || '';

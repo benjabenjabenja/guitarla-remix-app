@@ -60,7 +60,10 @@ export function Document({ children }: React.ComponentProps<any>) {
 export default function App() {
     return (
         <Document>
-            <Outlet />
+            <Outlet context={{
+                store: {},
+                auth: true
+            }} />
        </Document>
     );
 }
