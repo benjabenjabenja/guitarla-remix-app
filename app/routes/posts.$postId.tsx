@@ -14,7 +14,6 @@ export async function loader({ params }: { request: Request, params: IPostParams
             statusText: 'Post not found'
         });
     }
-    console.log({response})
     return response;
 }
 

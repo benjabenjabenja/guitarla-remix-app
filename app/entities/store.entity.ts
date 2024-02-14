@@ -1,5 +1,5 @@
 export type IStore = {
-    cart: ICartStore
+    cart: ICartStore[]
 }
 export type ICartStore = {
     image_url: string,

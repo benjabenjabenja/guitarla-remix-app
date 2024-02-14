@@ -62,11 +62,13 @@ export function Document({ children }: React.ComponentProps<any>) {
 }
 
 export default function App() {
-    const [store, setStore] = useState({});
+    const [store, setStore] = useState({} as IStore);
     const [cart, setCart] = useState<ICartStore[]>([]);
     const load_data = (): void => {
-        const store: IStore = JSON.parse(localStorage.getItem("store") || "{}");
+        const storage = localStorage.getItem("store");
+        const store: IStore = JSON.parse( storage || "{}");
         isValidObject(store) && setStore(store);
+        isValidObject(store?.cart) && setCart(store?.cart || []);
     }
     useEffect(
         () => load_data(), []
@@ -81,20 +83,21 @@ export default function App() {
             localStorage.setItem("store", JSON.stringify(store));
         }, [store]
     );
-    const addToCart = (c: ICartStore): void => {
-        if (isValidObject(c)) {
-            const valid = cart.some(v => v?.url === c?.url);
+
+    const addToCart = (cartItem: ICartStore): void => {
+        if (isValidObject(cartItem)) {
+            const valid = cart.some(v => v?.url === cartItem?.url);
             if (!valid) {
-                setCart([...cart, c]);
+                setCart([...cart, cartItem]);
             } else {
-                const confirmation = confirm(`Seguro dese updatear los datos de ${c.guitar_name}?`);
-                confirmation && setCart(cart.map(ca => {
-                    if (ca.url === c.url) {
+                const confirmation = confirm(`Seguro dese updatear los datos de ${cartItem.guitar_name}?`);
+                confirmation && setCart(cart.map(item => {
+                    if (item.url === cartItem.url) {
                         return {
-                            ...ca, ...c
+                            ...item, ...cartItem
                         };
                     }
-                    return ca;
+                    return item;
                 }));
             }
         }
@@ -103,7 +106,7 @@ export default function App() {
         <Document>
             <Outlet context={{
                 addToCart,
-                store
+                cart: store?.cart
             }} />
        </Document>
     );
