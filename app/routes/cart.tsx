@@ -1,5 +1,5 @@
 import { useOutletContext } from '@remix-run/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CartList from '~/components/cart-list';
 import { ICartStore } from '~/entities/store.entity';
 import styles from '~/styles/cart.css';
@@ -27,11 +27,7 @@ const Cart = () => {
     // podrian acceder a este context
     const { cart } = useOutletContext<{ addToCart: (cart: ICartStore) => void, cart: ICartStore[] }>();
     const [total, setTotal] = useState(0);
-    useEffect(
-        () => {
-            cart?.forEach( item => setTotal(total + (item?.t_price ?? 0)));
-        }, [cart]
-    );
+
     console.log({ cart, total });
     return (
         <main className="contenedor">
@@ -39,7 +35,7 @@ const Cart = () => {
             <div className="contenido">
                 <div className="cart">
                     <h2>Articles</h2>
-                    <CartList cart={cart} />
+                    <CartList cart={cart} setTotal={setTotal} total={total} />
                 </div>
 
                 <aside className="resumen">
