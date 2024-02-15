@@ -18,6 +18,7 @@
     align-items: center;
     padding: 2rem 0;
     border-bottom:  1px solid var(--primary);
+    position: relative;
 }
 .product:last-of-type {
     border-bottom: none;
@@ -61,4 +62,19 @@
     border-radius: 5px;
     position: sticky;
     top: 4rem
+}
+.button-delete {
+    position: absolute;
+    top: 3.2rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    transition: all .5s ease-in-out;
+    border-radius: 25rem;
+    color: var(--primary);
+}
+.button-delete:hover {
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--primary);
 }

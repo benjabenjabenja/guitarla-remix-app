@@ -86,13 +86,13 @@ export default function App() {
 
     const addToCart = (cartItem: ICartStore): void => {
         if (isValidObject(cartItem)) {
-            const valid = cart.some(v => v?.url === cartItem?.url);
+            const valid = cart?.some(v => v?.url === cartItem?.url);
             if (!valid) {
                 setCart([...cart, cartItem]);
             } else {
                 const confirmation = confirm(`Seguro dese updatear los datos de ${cartItem.guitar_name}?`);
-                confirmation && setCart(cart.map(item => {
-                    if (item.url === cartItem.url) {
+                confirmation && setCart(cart?.map(item => {
+                    if (item?.url === cartItem?.url) {
                         return {
                             ...item, ...cartItem
                         };
@@ -102,11 +102,18 @@ export default function App() {
             }
         }
     }
+    const delteItemCart = (item: ICartStore) => {
+        if (isValidObject(item)) {
+            const filtered = cart?.filter(v => v?.url !== item?.url);
+            filtered?.length > 0 && setCart(filtered); 
+        }
+    }
     return (
         <Document>
             <Outlet context={{
                 addToCart,
-                cart: store?.cart
+                cart: store?.cart,
+                delteItemCart
             }} />
        </Document>
     );
