@@ -1,5 +1,5 @@
 import { useOutletContext } from '@remix-run/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CartList from '~/components/cart-list';
 import { ICartStore } from '~/entities/store.entity';
 import styles from '~/styles/cart.css';
@@ -25,17 +25,22 @@ const Cart = () => {
     // ej: <Outlet context={useContext()} />
     // de esta forma, si tuvieramos sub paginas o paginas hijas, 
     // podrian acceder a este context
-    const { cart } = useOutletContext<{ addToCart: (cart: ICartStore) => void, cart: ICartStore[] }>();
     const [total, setTotal] = useState(0);
+    const { cart } = useOutletContext<{ addToCart: (cart: ICartStore) => void, cart: ICartStore[] }>();
 
-    console.log({ cart, total });
+    useEffect(
+        () => {
+            const new_total = cart?.reduce((acc, cv) => acc + cv.t_price, 0);
+            new_total && setTotal(new_total);
+        }, [cart]
+    );
     return (
         <main className="contenedor">
             <h1 className="heading">Cart shop</h1>
             <div className="contenido">
                 <div className="cart">
                     <h2>Articles</h2>
-                    <CartList cart={cart} setTotal={setTotal} total={total} />
+                    <CartList cart={cart} />
                 </div>
 
                 <aside className="resumen">

@@ -4,7 +4,7 @@ import { useOutletContext } from '@remix-run/react';
 import { ICartStore } from '~/entities/store.entity';
 import { uniqueId } from '~/utils/helpers.utils';
 
-const CartItem = ({ cart, setTotal, total }:{ cart: ICartStore, setTotal: (v:number) => void, total: number }) => {
+const CartItem = ({ cart }:{ cart: ICartStore }) => {
     
     const { addToCart } = useOutletContext() as { addToCart: (item: ICartStore) => void };
     const { image_url, guitar_name, p_uni, t_price, count } = cart;
@@ -18,8 +18,6 @@ const CartItem = ({ cart, setTotal, total }:{ cart: ICartStore, setTotal: (v:num
             t_price: p_uni * +value
         };
         addToCart(obj);
-        const new_total = obj?.t_price + total;
-        setTotal(new_total);
     }
     return (
         <div className='product'>
@@ -28,8 +26,8 @@ const CartItem = ({ cart, setTotal, total }:{ cart: ICartStore, setTotal: (v:num
             </div>
             <div>
                 <p className='guitar-name'>{guitar_name}</p>
-                <label htmlFor='amount'>amount:</label>
-                <select id='amount' name='amount' value={count} onChange={handleOnchangeAmount}>
+                <label htmlFor={'amount'+ uniqueId()}>amount:</label>
+                <select id={'amount'+ uniqueId()} name='amount' value={count} onChange={handleOnchangeAmount}>
                     {
                         [1, 2, 3, 4, 5].map(v => (<option key={uniqueId()} value={v}>{ v }</option>))
                     }

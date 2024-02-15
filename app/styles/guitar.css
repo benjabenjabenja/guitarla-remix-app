@@ -99,3 +99,22 @@
     background-color: var(--primary);
     cursor: pointer;
 }
+
+.contenido a.back__to__market {
+    border-radius: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    transition: all .5s ease;
+    margin-top: 8rem;
+    color: var(--primary);
+    width: 25%;
+    text-wrap: nowrap;
+}
+.contenido a.back__to__market:hover {
+    background-color: transparent;
+    border-bottom: 1px solid var(--primary);
+}

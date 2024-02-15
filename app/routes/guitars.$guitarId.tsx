@@ -88,10 +88,10 @@ function GuitarId() {
                             </select>
                             <input type="submit" value={"Add to cart"} />
                         </form>
+                        <Link className="back__to__market" to={"/market"}> back to market </Link>
                     </div>
                 </main>
             }
-            <Link to={"/market"}> back to market </Link>
         </>
     )
 }
